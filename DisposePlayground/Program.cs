@@ -23,7 +23,7 @@ namespace DisposePlayground
             var listenToMe = new ListenToMe();
             listenToMe.OnObjectReady += OnObjectReady;
             listenToMe.OnObjectReady += OnObjectReady2;
-            listenToMe.Start(); // raises OnObjectReady with disposable object in 1500 ms
+            listenToMe.Start(); // raises OnObjectReady with disposable object in 500 ms
             Thread.Sleep(2000);
             Console.WriteLine(s_builder.ToString()); // threads can't write to console directly
             Console.ReadLine();
