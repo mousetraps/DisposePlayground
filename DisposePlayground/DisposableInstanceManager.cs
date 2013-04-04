@@ -47,19 +47,4 @@ namespace DisposePlayground
 
         }
     }
-
-    public class Data : IDisposable
-    {
-        private string m_data = "hello there!";
-
-        public void Dispose()
-        {
-            m_data = "disposed :(";
-        }
-
-        public override string ToString()
-        {
-            return m_data;
-        }
-    }
 }
