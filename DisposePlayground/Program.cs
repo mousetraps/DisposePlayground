@@ -30,34 +30,34 @@ namespace DisposePlayground
 
         }
 
-        private static void OnObjectReady(object sender, DisposableObject.DisposableObjectEventArgs e)
+        private static void OnObjectReady(object sender, DisposableInstanceManager<Data> e)
         {
-            DisposableObject disposable;
-            using (disposable = e.OpenDisposableObject())
+            DisposableInstanceManager<Data> disposableInstance;
+            using (disposableInstance = e.OpenInstance())
             {
-                s_builder.AppendLine(string.Format("1-before: {0}", disposable.Value));
+                s_builder.AppendLine(string.Format("1-before: {0}", disposableInstance.Value));
                 Thread.Sleep(250);
             }
 
-            s_builder.AppendLine(string.Format("1-after: {0}", disposable.Value));
+            s_builder.AppendLine(string.Format("1-after: {0}", disposableInstance.Value));
 
             Thread.Sleep(750);
 
-            s_builder.AppendLine(string.Format("1-late: {0}", disposable.Value));
+            s_builder.AppendLine(string.Format("1-late: {0}", disposableInstance.Value));
         }
 
-        private static void OnObjectReady2(object sender, DisposableObject.DisposableObjectEventArgs e)
+        private static void OnObjectReady2(object sender, DisposableInstanceManager<Data> e)
         {
-            DisposableObject disposable;
-            using (disposable = e.OpenDisposableObject())
+            DisposableInstanceManager<Data> disposableInstance;
+            using (disposableInstance = e.OpenInstance())
             {
-                s_builder.AppendLine(string.Format("2-before: {0}", disposable.Value));
+                s_builder.AppendLine(string.Format("2-before: {0}", disposableInstance.Value));
                 Thread.Sleep(750);
-
-                s_builder.AppendLine(string.Format("2-between: {0}", disposable.Value));
+                
+                s_builder.AppendLine(string.Format("2-between: {0}", disposableInstance.Value));
             }
 
-            s_builder.AppendLine(string.Format("2-after: {0}", disposable.Value));
+            s_builder.AppendLine(string.Format("2-after: {0}", disposableInstance.Value));
 
 
         }

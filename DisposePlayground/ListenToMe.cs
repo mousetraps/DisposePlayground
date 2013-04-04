@@ -13,8 +13,7 @@ namespace DisposePlayground
     {
         private Timer m_timer;
 
-        private DisposableObject.DisposableObjectEventArgs m_disposableObjectEventArgs =
-            new DisposableObject.DisposableObjectEventArgs(new DisposableObject());
+        private readonly DisposableInstanceManager<Data>  m_disposableInstanceManagerEventArgs = new DisposableInstanceManager<Data>(new Data());
 
         public void Start()
         {
@@ -34,8 +33,8 @@ namespace DisposePlayground
                 var eventListeners = OnObjectReady.GetInvocationList();
                 for (int index = 0; index < eventListeners.Count(); index++)
                 {
-                    var methodToInvoke = (EventHandler<DisposableObject.DisposableObjectEventArgs>) eventListeners[index];
-                    methodToInvoke.BeginInvoke(this, m_disposableObjectEventArgs, EndAsyncEvent, null);
+                    var methodToInvoke = (EventHandler<DisposableInstanceManager<Data>>) eventListeners[index];
+                    methodToInvoke.BeginInvoke(this, m_disposableInstanceManagerEventArgs, EndAsyncEvent, null);
                 }
             }
 
@@ -44,7 +43,7 @@ namespace DisposePlayground
         private void EndAsyncEvent(IAsyncResult iar)
         {
             var ar = (AsyncResult) iar;
-            var invokedMethod = (EventHandler<DisposableObject.DisposableObjectEventArgs>) ar.AsyncDelegate;
+            var invokedMethod = (EventHandler<DisposableInstanceManager<Data>>) ar.AsyncDelegate;
 
             try
             {
@@ -56,7 +55,7 @@ namespace DisposePlayground
             }
         }
 
-        public EventHandler<DisposableObject.DisposableObjectEventArgs> OnObjectReady;
+        public EventHandler<DisposableInstanceManager<Data>> OnObjectReady;
 
 
     }
