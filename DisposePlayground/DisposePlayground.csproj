@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data.cs" />
-    <Compile Include="DisposableInstanceManager.cs" />
+    <Compile Include="MyDisposableObject.cs" />
+    <Compile Include="ManagedDisposableObject.cs" />
     <Compile Include="ListenToMe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
